@@ -8,6 +8,8 @@
 #ifndef ILI9325_REGISTERS_H_
 #define ILI9325_REGISTERS_H_
 
+#include <cstdint>
+
 namespace Stm32PlusPlus { namespace Display { namespace Reg {
 
 #define COMBINE2(__a, __b) __a##__b
@@ -94,51 +96,37 @@ namespace DisplayControl2 {
 
 namespace DisplayControl3 {
 	static constexpr uint16_t Address = 0x09;
-
 	static constexpr uint16_t ISC_bitmask = 0xf;
 	static constexpr uint16_t ISC_offset = 0;
-
 	static constexpr uint16_t PTG_bitmask = 0x3;
 	static constexpr uint16_t PTG_offset = 4;
-	
-	static constexpr uint16_t PTS0 = 1 << 8;
-	static constexpr uint16_t PTS1 = 1 << 9;
-	static constexpr uint16_t PTS2 = 1 << 10;
+	static constexpr uint16_t PTS_bitmask = 0x7;
+	static constexpr uint16_t PTS_offset = 8;
 }
 
 namespace DisplayControl4 {
 	static constexpr uint16_t Address = 0x0A;
-	static constexpr uint16_t FMI0 		= 1 << 0;
-	static constexpr uint16_t FMI1 		= 1 << 1;
-	static constexpr uint16_t FMI2 		= 1 << 2;
+	static constexpr uint16_t FMI_bitmask = 0x7;
+	static constexpr uint16_t FMI_offset = 0;
 	static constexpr uint16_t FMARKOE 	= 1 << 3;
 }
 
 namespace RgbDisplayInterfaceControl1 {
 	static constexpr uint16_t Address 	= 0x0C;
 	//RGB Interface Mode 0 == 18 bit, 1 == 16 bit, 2 == 6 bit
-	static constexpr uint16_t RIM0 		= 1 << 0;
-	static constexpr uint16_t RIM1 		= 1 << 1;
-
-	static constexpr uint16_t DM0 		= 1 << 4;
-	static constexpr uint16_t DM1 		= 1 << 5;
+	static constexpr uint16_t RIM_bitmask = 0x3;
+	static constexpr uint16_t RIM_offset = 0;
+	static constexpr uint16_t DM_bitmask = 0x3;
+	static constexpr uint16_t DM_offset = 4;
 	static constexpr uint16_t RM 		= 1 << 8;
-	static constexpr uint16_t ENC0 		= 1 << 12;
-	static constexpr uint16_t ENC1 		= 1 << 13;
-	static constexpr uint16_t ENC2 		= 1 << 14;
+	static constexpr uint16_t ENC_bitmask = 0x7;
+	static constexpr uint16_t ENC_offset = 12;
 }
 
 namespace FrameMarkerPosition {
 	static constexpr uint16_t Address = 0x0D;
-	static constexpr uint16_t FMP0 	  = 1 << 0;
-	static constexpr uint16_t FMP1 	  = 1 << 1;
-	static constexpr uint16_t FMP2 	  = 1 << 2;
-	static constexpr uint16_t FMP3 	  = 1 << 3;
-	static constexpr uint16_t FMP4 	  = 1 << 4;
-	static constexpr uint16_t FMP5 	  = 1 << 5;
-	static constexpr uint16_t FMP6 	  = 1 << 6;
-	static constexpr uint16_t FMP7 	  = 1 << 7;
-	static constexpr uint16_t FMP8 	  = 1 << 8;
+	static constexpr uint16_t FMP_bitmask = 0x1ff;
+	static constexpr uint16_t FMP_offset = 0;
 }
 
 namespace RgbDisplayInterfaceControl2 {
@@ -158,14 +146,12 @@ namespace PowerControl1 {
 	//Deep standby
 	static constexpr uint16_t DSTB 	  = 1 << 2;
 	//Amplifier value
-	static constexpr uint16_t AP0 	  = 1 << 4;
-	static constexpr uint16_t AP1 	  = 1 << 5;
-	static constexpr uint16_t AP2 	  = 1 << 6;
+	static constexpr uint16_t AP_bitmask = 0x7;
+	static constexpr uint16_t AP_offset = 4;
 	//Power supply enable bit.
 	static constexpr uint16_t APE 	  = 1 << 7;
-	static constexpr uint16_t BT0 	  = 1 << 8;
-	static constexpr uint16_t BT1 	  = 1 << 9;
-	static constexpr uint16_t BT2 	  = 1 << 10;
+	static constexpr uint16_t BT_bitmask = 0x7;
+	static constexpr uint16_t BT_offset = 8;
 	//SAP=0, Source driver is disabled. SAP=1, Source driver is enabled.
 	static constexpr uint16_t SAP 	  = 1 << 12;
 }
@@ -202,37 +188,22 @@ namespace PowerControl4 {
 
 namespace HorizontalGRAMAddressSet {
 	static constexpr uint16_t Address = 0x20;
-	static constexpr uint16_t AD0 	  = 1 << 0;
-	static constexpr uint16_t AD1 	  = 1 << 1;
-	static constexpr uint16_t AD2 	  = 1 << 2;
-	static constexpr uint16_t AD3 	  = 1 << 3;
-	static constexpr uint16_t AD4 	  = 1 << 4;
-	static constexpr uint16_t AD5 	  = 1 << 5;
-	static constexpr uint16_t AD6 	  = 1 << 6;
-	static constexpr uint16_t AD7 	  = 1 << 7;
+	static constexpr uint16_t AD_bitmask = 0xff;
+	static constexpr uint16_t AD_offset = 0;
 }
 
 namespace VerticalGRAMAddressSet {
 	static constexpr uint16_t Address = 0x21;
-	static constexpr uint16_t AD8 	  = 1 << 0;
-	static constexpr uint16_t AD9 	  = 1 << 1;
-	static constexpr uint16_t AD10 	  = 1 << 2;
-	static constexpr uint16_t AD11 	  = 1 << 3;
-	static constexpr uint16_t AD12 	  = 1 << 4;
-	static constexpr uint16_t AD13 	  = 1 << 5;
-	static constexpr uint16_t AD14 	  = 1 << 6;
-	static constexpr uint16_t AD15 	  = 1 << 7;
-	static constexpr uint16_t AD16 	  = 1 << 8;
+	static constexpr uint16_t AD_bitmask = 0x1ff;
+	static constexpr uint16_t AD_offset = 0;
 }
 
 namespace WriteDataToGRAM {
-	//Set the internal VcomH voltage.
 	static constexpr uint16_t Address = 0x22;
 }
 
 namespace PowerControl7 {
 	static constexpr uint16_t Address = 0x29;
-
 	static constexpr uint16_t VCM_bitmask = 0x3f;
 	static constexpr uint16_t VCM_offset = 0;
 }
