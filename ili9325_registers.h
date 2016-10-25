@@ -8,7 +8,6 @@
 #ifndef ILI9325_REGISTERS_H_
 #define ILI9325_REGISTERS_H_
 
-
 namespace Stm32PlusPlus { namespace Display { namespace Reg {
 
 #define COMBINE2(__a, __b) __a##__b
@@ -99,8 +98,9 @@ namespace DisplayControl3 {
 	static constexpr uint16_t ISC_bitmask = 0xf;
 	static constexpr uint16_t ISC_offset = 0;
 
-	static constexpr uint16_t PTG0 = 1 << 4;
-	static constexpr uint16_t PTG1 = 1 << 5;
+	static constexpr uint16_t PTG_bitmask = 0x3;
+	static constexpr uint16_t PTG_offset = 4;
+	
 	static constexpr uint16_t PTS0 = 1 << 8;
 	static constexpr uint16_t PTS1 = 1 << 9;
 	static constexpr uint16_t PTS2 = 1 << 10;
