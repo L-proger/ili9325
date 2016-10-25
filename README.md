@@ -1,2 +1,2 @@
 # ili9325
-ILI9325 C++ driver
+ILI9325 LCD controller C++ driver
