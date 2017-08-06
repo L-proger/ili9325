@@ -72,7 +72,7 @@ public:
 		HAL_Delay(200);
 
 		// Dis-charge capacitor power voltage
-		write(Reg::PowerControl1::Address, Reg::PowerControl1::AP0 | Reg::PowerControl1::APE | Reg::PowerControl1::SAP);
+		write(Reg::PowerControl1::Address, REG_SET(Reg::PowerControl1, AP, 7) | Reg::PowerControl1::APE | Reg::PowerControl1::SAP);
 
 		write(Reg::PowerControl2::Address,
 				REG_SET(Reg::PowerControl2, VC, 7) |
